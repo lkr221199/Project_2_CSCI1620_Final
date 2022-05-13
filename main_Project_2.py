@@ -5,6 +5,7 @@ def main():
     app = QApplication([])
     window = Controller()
     window.show()
+    app.setStyle(QStyleFactory.create('Fusion'))
     app.exec_()
 
 
