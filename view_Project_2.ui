@@ -31,6 +31,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">Fusion</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="enabled">
     <bool>true</bool>
@@ -142,6 +145,12 @@
            <height>20</height>
           </size>
          </property>
+         <property name="focusPolicy">
+          <enum>Qt::StrongFocus</enum>
+         </property>
+         <property name="inputMask">
+          <string comment="9"/>
+         </property>
          <property name="placeholderText">
           <string>Enter number (e.g. 120)</string>
          </property>
@@ -155,6 +164,12 @@
            <height>20</height>
           </size>
          </property>
+         <property name="focusPolicy">
+          <enum>Qt::StrongFocus</enum>
+         </property>
+         <property name="inputMask">
+          <string comment="9"/>
+         </property>
          <property name="placeholderText">
           <string>Enter a number (e.g. 150)</string>
          </property>
@@ -167,6 +182,12 @@
            <width>400</width>
            <height>20</height>
           </size>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::StrongFocus</enum>
+         </property>
+         <property name="inputMask">
+          <string comment="9"/>
          </property>
          <property name="text">
           <string/>
@@ -184,8 +205,14 @@
            <height>20</height>
           </size>
          </property>
+         <property name="focusPolicy">
+          <enum>Qt::StrongFocus</enum>
+         </property>
+         <property name="inputMask">
+          <string comment="9"/>
+         </property>
          <property name="placeholderText">
-          <string>Enter a number (e.g. if ratio is 1 to 15, enter 15)</string>
+          <string>Enter a number (ex: if ratio is 1:15, enter 15 only)</string>
          </property>
         </widget>
        </item>
@@ -259,6 +286,15 @@
            <width>400</width>
            <height>20</height>
           </size>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::StrongFocus</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="inputMask">
+          <string comment="9"/>
          </property>
          <property name="placeholderText">
           <string>Enter number (e.g. 85)</string>
