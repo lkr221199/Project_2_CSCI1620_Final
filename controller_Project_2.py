@@ -1,42 +1,35 @@
 from PyQt5.QtWidgets import *
 from view_Project_2 import Ui_MainWindow
-import Insulin_Calc
+from InsulinCalc import *
 
 
 class Controller(QMainWindow, Ui_MainWindow):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.setupUi(self)
+        self.calc = InsulinCalc()
+        self.button_calculate.clicked.connect(lambda: self.get_form_data())
 
-        self.button_submit_user_info.clicked.connect(lambda: self.set_user_info())
-        self.button_submit_food_info.clicked.connect(lambda: self.set_food_info())
-        self.button_calculate_insulin_dose.clicked.connect(lambda: self.calculate())
+    def update_display(self, calc_info):
+        # clear form inputs
+        self.textEnter_current_blood_sugar.clear()
+        self.textEnter_target_blood_sugar.clear()
+        self.textEnter_correction_factor.clear()
+        self.textEnter_ratio.clear()
+        self.textEnter_total_carbs()
+        # update label to display total dose
+        self.label_update_display_insulin_dose.setText(f'Your total insulin dose is {} Units')
 
-    def update_display_setup_tab(self):
-        pass
-
-    def update_display_main_tab(self):
-        pass
-
-    def calculate(self):
+    def get_form_data(self):
         current_blood_sugar = self.textEnter_current_blood_sugar()
-        total_carbs = self.textEnter_total_carbs()
+        target_blood_sugar = self.textEnter_target_blood_sugar()
+        correction_factor = self.textEnter_correction_factor()
         ratio = self.textEnter_ratio()
-        insulin_dose = Insulin_Calc.InsulinDose(current_blood_sugar, total_carbs, ratio)
-
-    def set_user_info(self):
-        name = self.textEnter_user_name.text()
-        age = self.textEnter_user_age.text()
-        weight = self.textEnter_user_weight.text()
-        correction_factor = self.textEnter_user_correction_factor.text()
-        target_blood_sugar = self.textEnter_user_blood_sugar_target.text()
-        user = Insulin_Calc.User(name, age, weight, correction_factor, target_blood_sugar)
-
-    def set_food_info(self):
-        food = self.textEnter_food.text()
-        serv_size = self.textEnter_serv_size.text()
-        carbs_per_serv = self.textEnter_carbs_per_serv.text()
-        food = Insulin_Calc.Food(food, serv_size, carbs_per_serv)
-
-
+        total_carbs = self.textEnter_total_carbs()
+        form_data = {'current_blood_sugar':current_blood_sugar,
+                     'target_blood_sugar':target_blood_sugar,
+                     'correction_factor': correction_factor,
+                     'ratio':ratio,
+                     'total_carbs':total_carbs}
+        return form_data
 
