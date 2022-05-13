@@ -1,8 +1,8 @@
-import unittest
+import pytest
 import controller_Project_2
 
 
-class TestController2(unittest.TestCase):
+class TestController2(pytest.TestCase):
 
     def test_update_calc(self):
         pass
@@ -12,5 +12,5 @@ class TestController2(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()
+    pytest.main()
 

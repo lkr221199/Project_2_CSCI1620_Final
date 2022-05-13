@@ -11,7 +11,12 @@ class Controller(QMainWindow, Ui_MainWindow):
         self.button_calculate.clicked.connect(lambda: self.update_calc())
 
     def update_calc(self):
-        self.calculation.current_blood_sugar = int(self.textEnter_current_blood_sugar.text())
+        if self.textEnter_current_blood_sugar.text() is not None:
+            self.calculation.current_blood_sugar = int(self.textEnter_current_blood_sugar.text())
+        else:
+            self.label_update_display_insulin_dose.setText(f'Please enter current blood sugar.')
+            raise ValueError(f'Enter current blood sugar')
+
         self.calculation.target_blood_sugar = int(self.textEnter_target_blood_sugar.text())
         self.calculation.correction_factor = int(self.textEnter_correction_factor.text())
         self.calculation.ratio = int(self.textEnter_ratio.text())

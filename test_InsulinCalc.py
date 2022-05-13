@@ -1,8 +1,8 @@
-import unittest
+import pytest
 import InsulinCalc
 
 
-class TestInsulinCalc(unittest.TestCase):
+class TestInsulinCalc(pytest.TestCase):
 
     def test_calculate_bolus(self):
         pass
@@ -18,5 +18,5 @@ class TestInsulinCalc(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main()
+    pytest.main()
 
