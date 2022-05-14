@@ -2,7 +2,7 @@ import pytest
 import InsulinCalc
 
 
-class TestInsulinCalc(pytest.TestCase):
+class TestInsulinCalc:
 
     def test_calculate_bolus(self):
         pass

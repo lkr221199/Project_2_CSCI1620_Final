@@ -1,5 +1,8 @@
 class InsulinCalc:
-    def __init__(self):
+    def __init__(self) -> None:
+        """
+        Constructor to create initial state of InsulinCalc object.
+        """
         self.current_blood_sugar = None
         self.target_blood_sugar = None
         self.correction_factor = None
@@ -9,24 +12,34 @@ class InsulinCalc:
         self.correction_dose = None
         self.total_insulin_dose = None
 
-    def calculate_bolus(self):
+    def calculate_bolus(self) -> None:
+        """
+        Method to calculate bolus dose
+        """
         self.bolus = self.total_carbs / self.ratio
 
-    def calculate_correction(self):
+    def calculate_correction(self) -> None:
+        """
+        Method to calculate correction dose
+        """
         self.correction_dose = (self.current_blood_sugar - self.target_blood_sugar) / self.correction_factor
         if self.correction_dose < 0:
             self.correction_dose = 0
 
-    def calculate_total_dose(self):
+    def calculate_total_dose(self) -> None:
+        """
+        Method to calculate total dose. Adds bolus and correction dose
+        """
         self.calculate_bolus()
         self.calculate_correction()
         self.total_insulin_dose = self.bolus + self.correction_dose
 
-    def get_calc_info(self):
+    def get_calc_info(self) -> dict:
+        """
+        Method to get all calculation attributes
+        :return: Returns dictionary with all calculation attributes
+        """
         self.calculate_total_dose()
-        # Total dose should be rounded to the nearest whole unit
-        round(self.total_insulin_dose)
-
         return {'current_blood_sugar': self.current_blood_sugar,
                 'target_blood_sugar': self.current_blood_sugar,
                 'correction_factor': self.correction_factor,
@@ -34,7 +47,7 @@ class InsulinCalc:
                 'total_carbs': self.total_carbs,
                 'bolus': self.bolus,
                 'correction_dose': self.correction_dose,
-                'total_insulin_dose': self.total_insulin_dose}
+                'total_insulin_dose': round(self.total_insulin_dose)}
 
     def __str__(self):
         return f'Current Blood Sugar = {self.current_blood_sugar} ' \
@@ -48,11 +61,3 @@ class InsulinCalc:
                f'\nTotal Dose (Bolus + Correction) = {self.total_insulin_dose:.0f} Units'
 
 
-def main():
-    calculate = InsulinCalc()
-    calculate.get_calc_info()
-    print(calculate)
-
-
-if __name__ == '__main__':
-    main()
