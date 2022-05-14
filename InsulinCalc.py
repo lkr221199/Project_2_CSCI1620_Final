@@ -14,15 +14,17 @@ class InsulinCalc:
 
     def calculate_bolus(self) -> None:
         """
-        Method to calculate bolus dose
+        Method to calculate bolus dose (accounts for carbs eaten)
         """
         self.bolus = self.total_carbs / self.ratio
 
     def calculate_correction(self) -> None:
         """
-        Method to calculate correction dose
+        Method to calculate correction dose (accounts for low blood sugar)
         """
         self.correction_dose = (self.current_blood_sugar - self.target_blood_sugar) / self.correction_factor
+        if self.correction_factor == 0:
+            raise ZeroDivisionError
         if self.correction_dose < 0:
             self.correction_dose = 0
 
@@ -37,6 +39,7 @@ class InsulinCalc:
     def get_calc_info(self) -> dict:
         """
         Method to get all calculation attributes
+        total_insulin_dose should be rounded to the nearest integer for display in GUI
         :return: Returns dictionary with all calculation attributes
         """
         self.calculate_total_dose()
