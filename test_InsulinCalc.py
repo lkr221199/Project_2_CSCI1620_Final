@@ -10,7 +10,7 @@ test_correction_calc_outcomes = [[50, 120, 60, 0],
                                  [176, 110, 50, 1.32],
                                  ]
 
-test_total_dose_calc_outcomes = [[1, 1, 1, 1, 1, 1],
+test_total_dose_calc_outcomes = [[220, 110, 50, 15, 85, 8],
                                  [100, 120, 50, 20, 1, 0]
                                  ]
 
